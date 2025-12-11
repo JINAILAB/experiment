@@ -1,0 +1,16 @@
+services:
+  experiment:
+    build: .
+    
+    container_name: ${CONTAINER_NAME}
+      
+    volumes:
+      - ${USER_WORKDIR}:/workspace
+      
+    ipc: host
+    stdin_open: true
+    tty: true
+    
+    device_cdi:
+      - nvidia.com/gpu=all
+    

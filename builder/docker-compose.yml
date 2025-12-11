@@ -1,0 +1,20 @@
+services:
+  experiment:
+    build: .
+    
+    container_name: ${CONTAINER_NAME}
+    
+    volumes:
+      - ${USER_WORKDIR}:/workspace
+      
+    ipc: host
+    stdin_open: true
+    tty: true
+    
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
